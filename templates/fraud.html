@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Fraudulent Claim Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/style.css')}}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  </head>
+  <body>
+    <nav class="navbar navbar-light bg-light static-top">
+        <div class="container-fluid">
+           <a class="navbar-brand" href="https://yourcompany.com"><img src="your_logo.png" alt="Company Logo" /></a>
+        </div>
+     </nav>
+    <section>
+        <div class="container-fluid">
+            <div class="container">
+                <form action="/" method="post">
+                    <legend>Fraudulent Claim Detection Form</legend>
+                    
+                    <div class="mb-3">
+                        <label for="months_as_customer">Months as Customer</label>
+                        <input type="number" class="form-control" id="months_as_customer" name="months_as_customer" placeholder="Enter months as customer" required="required">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="age">Age</label>
+                        <input type="number" class="form-control" id="age" name="age" placeholder="Enter Age" required="required">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="policy_deductable">Policy Deductible</label>
+                        <input type="number" class="form-control" id="policy_deductable" name="policy_deductable" placeholder="Enter Policy Deductible" required="required">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="policy_annual_premium">Policy Annual Premium</label>
+                        <input type="number" class="form-control" id="policy_annual_premium" name="policy_annual_premium" placeholder="Enter Policy Annual Premium" required="required">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="umbrella_limit">Umbrella Limit</label>
+                        <input type="number" class="form-control" id="umbrella_limit" name="umbrella_limit" placeholder="Enter Umbrella Limit" required="required">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="insured_education_level">Insured Education Level</label>
+                        <select class="form-control" id="insured_education_level" name="insured_education_level" required="required">
+                          <option value="" disabled selected>Select Education Level</option>
+                          <option>High School</option>
+                          <option>Bachelor's</option>
+                          <option>Master's</option>
+                          <option>PhD</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="incident_severity">Incident Severity</label>
+                        <select class="form-control" id="incident_severity" name="incident_severity" required="required">
+                          <option value="" disabled selected>Select Incident Severity</option>
+                          <option>Minor</option>
+                          <option>Moderate</option>
+                          <option>Severe</option>
+                          <option>Catastrophic</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="property_damage">Property Damage</label>
+                        <select class="form-control" id="property_damage" name="property_damage" required="required">
+                          <option value="" disabled selected>Property Damage</option>
+                          <option>Yes</option>
+                          <option>No</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="police_report_available">Police Report Available</label>
+                        <select class="form-control" id="police_report_available" name="police_report_available" required="required">
+                          <option value="" disabled selected>Police Report Available</option>
+                          <option>Yes</option>
+                          <option>No</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="total_claim_amount">Total Claim Amount</label>
+                        <input type="number" class="form-control" id="total_claim_amount" name="total_claim_amount" placeholder="Enter Total Claim Amount" required="required">
+                    </div>
+
+                    <input class="btn btn-primary" type="submit" value="Predict Fraud Status" required />
+
+                </form>
+            </div>
+            <div class="text-center text-black">
+                <h2 class="display-4 fw-bolder">Fraud Prediction Status: {{context}} </h2>
+            </div>
+        </div>
+    </section>
+    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+    <script type="text/javascript">
+        $(".input").focus(function(){
+            $(this).parent().addClass("focus");
+        }).blur(function(){
+            if($(this).val() === ''){
+                $(this).parent().removeClass("focus");
+            }
+        })
+    </script>
+  </body>
+</html>
